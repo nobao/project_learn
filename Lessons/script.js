@@ -1,3 +1,12 @@
-'use strict';
+"use strict";
 
-console.log(0 || "" || 2 || undefined || true || falsе);
+function learnJS(lang, callback) {
+    console.log('Я учу ' + lang);
+    callback();
+}
+
+function done() {
+    console.log('Я прошел 3-й урок!');
+}
+
+learnJS('JavaScript', done);
