@@ -1,12 +1,22 @@
-"use strict";
+let options = {
+    width: 1024,
+    height: 1024,
+    name: "test"
+};
 
-function learnJS(lang, callback) {
-    console.log('Я учу ' + lang);
-    callback();
+console.log(options.name);
+options.bool = false;
+options.colors = {
+    border: "black",
+    bg: "red"
+};
+
+delete options.bool;
+
+console.log(options);
+
+for (let key in options) {
+    console.log('Свойство ' + key + ' имеет значение ' + options[key]);
 }
 
-function done() {
-    console.log('Я прошел 3-й урок!');
-}
-
-learnJS('JavaScript', done);
+console.log(Object.keys(options).length);
