@@ -1,39 +1,38 @@
-let box = document.getElementById('box'),
-    btn = document.getElementsByTagName('button'),
-    circle = document.getElementsByClassName('circle'),
-    heart = document.querySelectorAll('.heart'),
-    oneHeart = document.querySelector('.heart'),
-    wrapper = document.querySelector('.wrapper');
+let btn = document.querySelectorAll('button'),
+    wrap = document.querySelector('.wrapper'),
+    link = document.querySelector('a');
 
-box.style.backgroundColor = 'green';
-btn[1].style.borderRadius = '100%';
+// btn[0].onclick = function() {
+//     alert('Вы нажали первую кнопку');
+// }; 
 
-circle[0].style.backgroundColor = 'red';
-circle[1].style.backgroundColor = 'yellow';
-circle[2].style.backgroundColor = 'green';
+// btn[0].onclick = function() {
+//     alert('Вы опять нажали первую кнопку');
+// };
 
-// for (let i = 0; i < heart.length; i++) {
-//     heart[i].style.backgroundColor = 'blue';
-// }
-
-// heart.forEach(function(item, i, hearts) {
-//     item.style.backgroundColor = 'black';
+// btn[0].addEventListener('click', function() {
+//     alert('Вы опять нажали первую кнопку');
 // });
 
-let div = document.createElement('div');
-    text = document.createTextNode('Тут был я');
+// btn[0].addEventListener('click', function(event) {
+//     console.log('Произошло событие: ' + event.type + ' на элементе ' + event.target);
+// });
 
-div.classList.add('black');   
+// wrap.addEventListener('click', function() {
+//     console.log('Произошло событие: ' + event.type + ' на элементе ' + event.target);
+// });
 
-// document.body.appendChild(div);
-// wrapper.appendChild(div);
+link.addEventListener('click', function(event) {
+    event.preventDefault();
+    console.log('Произошло событие: ' + event.type + ' на элементе ' + event.target);
+});
 
-// div.innerHTML = '<h1>Hello World!</h1>';
-div.textContent = 'Hello World!';
+btn.forEach(function(item) {
+    item.addEventListener('mouseleave', function() {
+        console.log('Вышли!');
+    });
+});
 
-document.body.insertBefore(div, circle[0]);
-document.body.removeChild(circle[1]);
-wrapper.removeChild(heart[1]);
-document.body.replaceChild(btn[1], circle[1]);
-
-console.log(div);
+// btn[0].addEventListener('mouseenter', function() {
+//     alert('Вы навели на первую кнопку');
+// });
