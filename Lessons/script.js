@@ -1,38 +1,43 @@
-let btn = document.querySelectorAll('button'),
-    wrap = document.querySelector('.wrapper'),
-    link = document.querySelector('a');
+// // let timerId = setTimeout(sayHello, 3000);
+// // clearTimeout(timerId);
 
-// btn[0].onclick = function() {
-//     alert('Вы нажали первую кнопку');
-// }; 
+// let timerId = setInterval(sayHello, 3000);
+// clearTimeout(timerId);
 
-// btn[0].onclick = function() {
-//     alert('Вы опять нажали первую кнопку');
-// };
+// function sayHello() {
+//     console.log('Hello World!');
+// }
 
-// btn[0].addEventListener('click', function() {
-//     alert('Вы опять нажали первую кнопку');
+// let timerId = setTimeout(function log() {
+//     console.log('Hello');
+//     setTimeout(log, 2000);
 // });
 
-// btn[0].addEventListener('click', function(event) {
-//     console.log('Произошло событие: ' + event.type + ' на элементе ' + event.target);
-// });
+let btn = document.querySelector('.btn'),
+    elem = document.querySelector('.box');
 
-// wrap.addEventListener('click', function() {
-//     console.log('Произошло событие: ' + event.type + ' на элементе ' + event.target);
-// });
+function myAnimation() {
+    let pos = 0;
 
-link.addEventListener('click', function(event) {
-    event.preventDefault();
-    console.log('Произошло событие: ' + event.type + ' на элементе ' + event.target);
+    let id = setInterval(frame, 10);
+    function frame() {
+        if (pos == 250) {
+            clearInterval();
+        } else {
+            pos++;
+            elem.style.top = pos + 'px';
+            elem.style.left = pos + 'px';
+        }        
+    }
+}
+
+btn.addEventListener('click', myAnimation);
+
+let btnBlock = document.querySelector('.btn-block'),
+    btns = document.getElementsByTagName('button');
+
+btnBlock.addEventListener('click', function(event) {
+    if (event.target && event.target.matches('button.first')) {
+        console.log('Hello');
+    }
 });
-
-btn.forEach(function(item) {
-    item.addEventListener('mouseleave', function() {
-        console.log('Вышли!');
-    });
-});
-
-// btn[0].addEventListener('mouseenter', function() {
-//     alert('Вы навели на первую кнопку');
-// });
