@@ -1,43 +1,20 @@
-// // let timerId = setTimeout(sayHello, 3000);
-// // clearTimeout(timerId);
+let box = document.querySelector('.box'),
+    btn = document.querySelector('button');
 
-// let timerId = setInterval(sayHello, 3000);
-// clearTimeout(timerId);
+let width = box.clientWidth,
+    height = box.clientHeight;
 
-// function sayHello() {
-//     console.log('Hello World!');
-// }
+console.log(width);
+console.log(height);
+console.log(box.getBoundingClientRect().left);
 
-// let timerId = setTimeout(function log() {
-//     console.log('Hello');
-//     setTimeout(log, 2000);
-// });
+console.log(document.documentElement.clientWidth);
+console.log(document.documentElement.clientHeight);
+console.log(document.documentElement.scrollTop);
 
-let btn = document.querySelector('.btn'),
-    elem = document.querySelector('.box');
-
-function myAnimation() {
-    let pos = 0;
-
-    let id = setInterval(frame, 10);
-    function frame() {
-        if (pos == 250) {
-            clearInterval();
-        } else {
-            pos++;
-            elem.style.top = pos + 'px';
-            elem.style.left = pos + 'px';
-        }        
-    }
-}
-
-btn.addEventListener('click', myAnimation);
-
-let btnBlock = document.querySelector('.btn-block'),
-    btns = document.getElementsByTagName('button');
-
-btnBlock.addEventListener('click', function(event) {
-    if (event.target && event.target.matches('button.first')) {
-        console.log('Hello');
-    }
+btn.addEventListener('click', function() {
+    box.scrollTop = 0;
 });
+
+scrollBy(0, 200);
+scrollTo(0, 200);

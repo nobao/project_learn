@@ -1,30 +1,19 @@
-button {
-    width: 80px;
-    height: 30px;
-    background-color: yellow; 
-    border: none;
-    margin-top: 10px;
-}
-
-.wrapper {
-    position: relative;
-    height: 300px;
-    width: 300px;
-    border: 2px solid red;
-    background-color: white;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
 .box {
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    background-color: blue;
+    width: 400px;
+    height: 350px;
+    overflow: scroll;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-.btn-block {
-    height: 50px;
-    background-color: grey;
-    padding-left: 10px;
+button {
+    width: 100px;
+    height: 40px;
+    background-color: dodgerblue;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
 }
