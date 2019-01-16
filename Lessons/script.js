@@ -1,20 +1,41 @@
-let box = document.querySelector('.box'),
-    btn = document.querySelector('button');
+// ES5
+// function User(name, id) {
+//     this.name = name;
+//     this.id = id;
+//     this.human = true;
+//     this.hello = function() {
+//         console.log('Hello! ' + this.name);
+//     };
+// }
+// User.prototype.exit = function(name) {
+//     console.log('Пользователь ' + this.name + ' ушел');
+// };
 
-let width = box.clientWidth,
-    height = box.clientHeight;
+// let ivan = new User('Ivan', 25),
+//     alex = new User('Alex', 20);
 
-console.log(width);
-console.log(height);
-console.log(box.getBoundingClientRect().left);
+// console.log(ivan);
+// console.log(alex);
 
-console.log(document.documentElement.clientWidth);
-console.log(document.documentElement.clientHeight);
-console.log(document.documentElement.scrollTop);
+// ivan.exit();
 
-btn.addEventListener('click', function() {
-    box.scrollTop = 0;
-});
-
-scrollBy(0, 200);
-scrollTo(0, 200);
+//ES6
+class User {
+    constructor(name, id) {
+        this.name = name;
+        this.id = id;
+        this.human = true;
+    }
+    hello() {
+        console.log(`Hello! ${this.name}`);
+    }
+    exit() {
+        console.log(`Пользователь ${this.name} ушел`);
+    }
+}
+let ivan = new User('Ivan', 25),
+    alex = new User('Alex', 20);
+console.log(ivan);
+console.log(alex);
+ivan.hello();
+alex.hello();
