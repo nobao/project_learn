@@ -85,18 +85,24 @@
 // console.log(double(3));
 // console.log(double(10));
 
-let btn = document.querySelector('button');
+// let btn = document.querySelector('button');
 
-btn.addEventListener('click', function() {
-    console.log(this);
-    this.style.backgroundColor = 'red';
-    function showThis() {
-        console.log(this);
-    }
-    showthis();
-});
+// btn.addEventListener('click', function() {
+//     console.log(this);
+//     this.style.backgroundColor = 'red';
+//     function showThis() {
+//         console.log(this);
+//     }
+//     showthis();
+// });
 
 // 1) Просто вызов функции - window/undefined
 // 2) Метод объекта - this = объект
 // 3) Конструктор (new) - this = новый созданный объект
 // 4) указание конкретного контекста - call, apply, bind
+
+let name = 'Ivan',
+    age = 30,
+    mail = 'example@mail.ru';
+
+document.write(`Пользователю ${name} ${age} лет. Его почтовый адрес: ${mail}`);
