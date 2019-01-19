@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Timer
 
-    let deadline = '2019-01-16 01:30';
+    let deadline = '2019-03-16 01:30';
 
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -90,4 +90,39 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     setClock('timer', deadline);
+
+    // Modal
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('.more-splash');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('.more-splash');
+        document.body.style.overflow = '';
+    });
+
+    // Modal 2
+
+    let infoDiv = document.querySelector('.info');
+
+    function infoOverlay() {
+            overlay.style.display = 'block';
+            more.classList.add('.more-splash');
+            document.body.style.overflow = 'hidden';
+    }
+    
+    infoDiv.addEventListener('click', function(event) { //добавляем отслеживателя кликов на родителе табов
+        let target = event.target;
+        if (target && target.classList.contains('description-btn')) { //если кликаем на "табе" (содержит класс табов)
+            infoOverlay();
+        }
+    });     
 });
