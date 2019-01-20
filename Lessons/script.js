@@ -173,3 +173,19 @@ class Rectangle {
 const square = new Rectangle(10);
 
 console.log(square.calcArea());
+
+let video = ['youtube', 'vimeo', 'rutube'],
+    blogs = ['wordpress', 'Livejournal', 'blogger'],
+    internet = [...video, ...blogs, 'vk', 'facebook'];
+
+console.log(internet);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log(a + b + c);
+}
+let numbers = [2, 5, 7];
+
+log(...numbers);
