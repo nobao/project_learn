@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Form
+    // // Form (из урока)
 
     let message = {
         loading: 'Загрузка...',
@@ -134,82 +134,139 @@ window.addEventListener('DOMContentLoaded', function() {
         failure: 'Что-то пошло не так...'
     };
 
-    let mainForm = document.querySelector('.main-form'),
-        input = mainForm.getElementsByTagName('input'),
+    // let mainForm = document.querySelector('.main-form'),
+    //     input = mainForm.getElementsByTagName('input'),
+    //     statusMessage = document.createElement('div');
+
+    // statusMessage.classList.add('status');
+
+    // mainForm.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //     mainForm.appendChild(statusMessage);
+
+    //     let request = new XMLHttpRequest();
+    //     request.open('POST', 'server.php');
+    //     request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+    //     let mainFormData = new FormData(mainForm);
+
+    //     let obj = {};
+    //     mainFormData.forEach(function(value, key) {
+    //         obj[key] = value;
+    //     });
+    //     let json = JSON.stringify(obj);
+
+    //     request.send(json);
+
+    //     request.addEventListener('readystatechange', function() {
+    //         if (request.readyState < 4) {
+    //             statusMessage.innerHTML = message.loading;
+    //         } else if (request.readyState === 4 && request.status == 200) {
+    //             statusMessage.innerHTML = message.success;
+    //         } else {
+    //             statusMessage.innerHTML = message.failure;
+    //         }
+    //     });
+
+    //     for (let i = 0; i < input.length; i++) {
+    //         input[i].value ='';
+    //     }
+    // });
+
+    // Form2 (сделанное мной после урока по Заданию)
+    // let contactForm = document.querySelector('#form'),
+    //     inputs = contactForm.getElementsByTagName('input'),
+    //     statusMessage2 = document.createElement('div');
+
+    // statusMessage2.classList.add('status');
+
+    // contactForm.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //     contactForm.appendChild(statusMessage2);
+
+    //     let req = new XMLHttpRequest();
+    //     req.open('POST', 'server.php');
+    //     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    //     let contactFormData = new FormData(contactForm);
+
+    //     for(let i = 0; i < inputs.length; i++) {
+    //         contactFormData.append(inputs[i].type, inputs[i].value);
+    //     }
+        
+    //     console.log(contactFormData);
+    //     req.send(contactFormData);
+
+    //     req.addEventListener('readystatechange', function() {
+    //         if (req.readyState < 4) {
+    //             statusMessage2.innerHTML = message.loading;
+    //         } else if (req.readyState === 4 && req.status == 200) {
+    //             statusMessage2.innerHTML = message.success;
+    //         } else {
+    //             statusMessage2.innerHTML = message.failure;
+    //         }
+    //     });
+
+    //     for (let i = 0; i < inputs.length; i++) {
+    //         inputs[i].value ='';
+    //     }
+    // });
+
+    // Form (объединенная, подсмотренная в уроке по Promise)
+
+    let form = document.getElementsByClassName('main-form')[0],
+        formBottom = document.getElementById('form'),
+        input = document.getElementsByTagName('input'),
         statusMessage = document.createElement('div');
 
     statusMessage.classList.add('status');
 
-    mainForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        mainForm.appendChild(statusMessage);
+    function sendForm(elem) {
+        elem.addEventListener('submit', function(e) {
+            e.preventDefault();
+                elem.appendChild(statusMessage);
+                let formData = new FormData(elem);
 
-        let request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                function postData(data) {
 
-        let mainFormData = new FormData(mainForm);
+                    return new Promise(function(resolve, reject) {
+                        let request = new XMLHttpRequest();
 
-        let obj = {};
-        mainFormData.forEach(function(value, key) {
-            obj[key] = value;
+                        request.open('POST', 'server.php');
+
+                        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                        request.onreadystatechange = function() {
+                            if (request.readyState < 4) {
+                                resolve();
+                            } else if (request.readyState === 4) {
+                                if (request.status == 200 && request.status < 300) {
+                                    resolve();
+                                } else {
+                                    reject();
+                                }
+                            }
+                        }
+
+                        request.send(data);
+                    });
+                } // end postData
+
+                function clearInput() {
+                    for (let i = 0; i < input.length; i++) {
+                        input[i].value = '';
+                    }
+                }
+
+                postData(formData)
+                    .then(() => statusMessage.innerHTML = message.loading)
+                    .then(() => statusMessage.innerHTML = message.success)
+                    .catch(() => statusMessage.innerHTML = message.failure)
+                    .then(clearInput)
         });
-        let json = JSON.stringify(obj);
+    }
 
-        request.send(json);
-
-        request.addEventListener('readystatechange', function() {
-            if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else if (request.readyState === 4 && request.status == 200) {
-                statusMessage.innerHTML = message.success;
-            } else {
-                statusMessage.innerHTML = message.failure;
-            }
-        });
-
-        for (let i = 0; i < input.length; i++) {
-            input[i].value ='';
-        }
-    });
-
-    // Form2
-    let contactForm = document.querySelector('#form'),
-        inputs = contactForm.getElementsByTagName('input'),
-        statusMessage2 = document.createElement('div');
-
-    statusMessage2.classList.add('status');
-
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        contactForm.appendChild(statusMessage2);
-
-        let req = new XMLHttpRequest();
-        req.open('POST', 'server.php');
-        req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        let contactFormData = new FormData(contactForm);
-
-        for(let i = 0; i < inputs.length; i++) {
-            contactFormData.append(inputs[i].type, inputs[i].value);
-        }
-        
-        console.log(contactFormData);
-        req.send(contactFormData);
-
-        req.addEventListener('readystatechange', function() {
-            if (req.readyState < 4) {
-                statusMessage2.innerHTML = message.loading;
-            } else if (req.readyState === 4 && req.status == 200) {
-                statusMessage2.innerHTML = message.success;
-            } else {
-                statusMessage2.innerHTML = message.failure;
-            }
-        });
-
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value ='';
-        }
-    });
+    sendForm(form);
+    sendForm(formBottom);
 
 });
