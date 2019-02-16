@@ -1,19 +1,34 @@
-.box {
-    width: 400px;
-    height: 350px;
-    overflow: scroll;
-    margin: 0 auto;
-    margin-top: 50px;
-    padding: 10px;
-    box-sizing: border-box;
+body {
+    background-color: rgb(212, 203, 203);
 }
 
-button {
-    width: 100px;
-    height: 40px;
-    background-color: dodgerblue;
-    font-weight: bold;
-    display: block;
+
+.form-signin {
     margin: 0 auto;
-    margin-top: 20px;
+    width: 30%;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+}
+
+
+#rememberMe {
+    float: left;
+}
+
+.btn {
+    background-color: blue;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+}
+
+.btn-block {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
 }

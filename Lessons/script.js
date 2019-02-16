@@ -1,38 +1,45 @@
-// let options = {
-//     width: 1366,
-//     height: 768,
-//     background: 'red',
-//     font: {
-//         size: '16px',
-//         color: '#fff'
-//     }
-// };
+// localStorage.setItem('number', 1);
 
-// console.log(JSON.parse(JSON.stringify(options)));
+// console.log(localStorage.getItem('number'));
 
-let inputRub = document.getElementById('rub'),
-    inputUsd = document.getElementById('usd');
+// localStorage.removeItem('number');
 
-inputRub.addEventListener('input', () => {
-    let request = new XMLHttpRequest();
+// localStorage.clear();
 
-    // request.open(method, url, async, login, pass)
-    request.open('GET', './current.json');
-    request.setRequestHeader('Content-type', 'aapplication/json; charset=utf-8');
-    request.send();
+window.addEventListener('DOMContentLoaded', function() {
+   
+    let checkbox = document.getElementById('rememberMe'),
+        change = document.getElementById('change'),
+        form = document.getElementsByTagName('form')[0];
+    
+    if (localStorage.getItem('isChecked') === 'true') {
+        checkbox.checked = true;
+    }
 
-    //status
-    //statusText
-    //responseText / response
-    //readyState
+    if (localStorage.getItem('bg') === 'changed') {
+        form.style.backgroundColor = '#FF4766';
+    }
 
-    request.addEventListener('readystatechange', function() {
-        if (request.readyState === 4 && request.status == 200) {
-            let data = JSON.parse(request.response);
-
-            inputUsd.value = inputRub.value / data.usd;
-        } else {
-            inputUsd.value = "Что-то пошло не так!";
-        }
+    checkbox.addEventListener('click', function() {
+        localStorage.setItem('isChecked', true);
     });
+    
+    change.addEventListener('click', function() {
+        localStorage.setItem('bg', 'changed');
+        form.style.backgroundColor = '#FF4766';
+    });
+
+    let person = {
+        name: 'Alex',
+        age: 25,
+        tech: ['mobile', 'notebook']
+    };
+
+    let serializedPerson = JSON.stringify(person);
+    localStorage.setItem("Alex", serializedPerson);
+
+    console.log(JSON.parse(localStorage.getItem("Alex")));
+
+
+
 });

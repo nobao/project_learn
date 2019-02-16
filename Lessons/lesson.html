@@ -4,25 +4,22 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Calc</title>
-		<style>
-			label {
-				display: block;
-				font-size: 30px;
-			}
-			input {
-				width: 300px;
-				height: 50px;
-				font-size: 30px;
-			}
-		</style>
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<label for="rub">RUB</label>
-		<input type="text" id="rub">
-		<label for="usd">USD</label>
-		<input type="text" id="usd">
+		<div class="wrapper">
+			<form action="" class="form-signin">
+				<h2 class="form-signin-heading">Please login</h2>
+				<input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="">
+				<input type="password" class="form-control" name="password" placeholder="Password" required="">
+				<label class="checkbox">
+					<input type="checkbox" name="rememberMe" id="rememberMe" value="remember-me"> Remember me
+				</label>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+			</form>
+			<button style="margin: 0 auto; display: block; margin-top: 10px;" class="btn btn-lg btn-primary" id="change">Change form</button>
+		</div>
 		<script src="script.js"></script>
-		<script src="promise.js"></script>
 	</body>
 </html>
