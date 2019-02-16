@@ -1,34 +1,32 @@
 body {
-    background-color: rgb(212, 203, 203);
+    background: yellow;
+    background: linear-gradient (to right, yellow,  rgb(252, 252, 185));
+    background: -webkit-linear-gradient (to right, yellow,  rgb(252, 252, 185));
 }
 
+.list {
+    margin-top: 50px;
+    text-align: center;    
+}
 
-.form-signin {
-    margin: 0 auto;
+.list-item {
+    margin-right: 20px;
+    margin-bottom: 30px;
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+img {
     width: 30%;
-    background-color: #fff;
-    padding: 30px;
+    height: 30%;
 }
 
-.form-control {
-    display: block;
-    width: 100%;
-}
-
-
-#rememberMe {
-    float: left;
-}
-
-.btn {
+.active {
     background-color: blue;
-    border-radius: 10px;
-    color: #fff;
-    padding: 10px;
-}
-
-.btn-block {
-    margin: 0 auto;
-    display: block;
-    width: 100%;
 }
