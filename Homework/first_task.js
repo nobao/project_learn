@@ -1,5 +1,11 @@
-let age = document.getElementById('age');
-function showUser(surname, name) {
-  alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+let word = "bottles",
+	count = 99;
+	
+while (count > 0) {
+	console.log(count + " " + word + " of beer on the wall");
+	console.log(count + " " + word + " of beer,");
+	console.log("Take one down, pass it around,");
+	count = count - 1;
 }
-showUser.call(age, 'Smith', 'John');
+
+console.log("No more " + word + " of beer on the wall.");
