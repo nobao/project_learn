@@ -1,7 +1,7 @@
 let passengers = [ { name: 'Jane Doloop', paid: true, ticket: 'coach' },
                     { name: 'Dr. Evel', paid: true, ticket: 'firstclass' },
                     { name: 'Sue Property', paid: false, ticket: 'firstclass' },
-                    { name: 'John Funcall', paid: true, ticket: 'coach' }, ]
+                    { name: 'John Funcall', paid: true, ticket: 'economplus' }, ]
 
 function checkNoFlyList(passenger) {
    return (passenger.name === 'Dr. Evel');
@@ -13,10 +13,6 @@ function checkNotPaid(passenger) {
 
 function printPassenger(passenger) {
     console.log(`Name: ${passenger.name}, paid: ${passenger.paid}`);
-}
-
-function serveCustomer(passenger) {
-    
 }
 
 function processPassengers(passengers, testFunction) {
@@ -39,6 +35,64 @@ if (!allPaid) {
 }
 
 processPassengers(passengers, printPassenger);
+
+function serveCustomer(passenger) {
+    let getDrinkOrderFunction = createDrinkOrder(passenger);
+    let getDinnerOrderFunction = createDinnerOrder(passenger);
+    getDrinkOrderFunction();
+    getDinnerOrderFunction();
+    getDrinkOrderFunction();
+    getDrinkOrderFunction();
+    // включить кино
+    getDrinkOrderFunction();
+    // забрать мусор
+}
+
+function createDrinkOrder(passenger) {
+    let orderFunction;
+
+    if (passenger.ticket === 'firstclass') {
+        orderFunction = function() {
+            alert('Would you like a cocktail or wine?');
+        }
+    } else if (passenger.ticket === 'economplus') {
+        orderFunction = function() {
+            alert('Would you like cola, water or wine?');
+        }
+    } else {
+        orderFunction = function() {
+            alert('Your choice is cola or water.');
+        }
+    }
+    return orderFunction;
+}
+
+function createDinnerOrder(passenger) {
+    let orderFunction;
+
+    if (passenger.ticket === 'firstclass') {
+        orderFunction = function() {
+            alert('Would you like chicken or pasta?');
+        }
+    } else if (passenger.ticket === 'economplus') {
+        orderFunction = function() {
+            alert('Would you like a sandwich or cheeze plate?');
+        }
+    } else {
+        orderFunction = function() {
+            alert('Your choice is peanuts or drybread.');
+        }
+    }
+    return orderFunction;
+}
+
+function servePassengers(passengers) {
+    for (let i = 0; i < passengers.length; i++) {
+        serveCustomer(passengers[i]);
+    }
+}
+
+servePassengers(passengers);
 
 // function fun(echo) {
 //     console.log(echo);
